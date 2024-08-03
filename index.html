@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botanega</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('plants2.jpeg'); /* Replace with the correct path to the uploaded image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .header {
+            font-size: 2.5em; /* Increased font size */
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #ffffff; /* Header text color set to white */
+        }
+        .container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 1000px; /* Increased max-width to accommodate text */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .logo img {
+            max-width: 200px;
+            margin-bottom: 20px;
+        }
+        .typing-text {
+            font-size: 1.5em;
+            color: #FFFFFF; /* Text color set to white */
+            overflow: hidden;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            border-right: .15em solid #33A97D; /* The typewriter cursor */
+            height: 2em; /* Ensure height consistency during typing */
+            animation: blink-caret .75s step-end infinite;
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #33A97D }
+        }
+        @media (max-width: 600px) {
+            .container {
+                max-width: 90%;
+                padding: 50px; /* Adjusted padding for smaller screens */
+                
+            }
+            .header {
+        font-size: 1.5em; /* Adjust font size for smaller screens */
+        color: #ffffff; /* Ensure the text color is white */
+        text-align: center; /* Ensure the text is centered */
+        margin: 10px 0; /* Adjust margin for smaller screens */
+    }
+            .typing-text {
+                font-size: 1.2em; /* Adjust font size for smaller screens */
+                padding-bottom: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        SUSTAINABILITY & INNOVATION: NEED & CHALLENGES
+    </div>
+    <div class="container">
+        <div class="logo">
+            <img src="logo.jpg" alt="Botanega Logo"> <!-- Replace with the correct path to the logo -->
+        </div>
+        <p class="typing-text" id="typing-text"></p>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const texts = [
+                "We're Building Something Great!",
+                "Thank you for your patience whilst we work on our site.",
+                "Stay tuned for exciting updates and the latest news on plant-based solutions."
+            ];
+
+            let container = document.getElementById('typing-text');
+            let textIndex = 0;
+            let charIndex = 0;
+            let currentText = '';
+
+            function typeWriter() {
+                const currentString = texts[textIndex];
+                
+                if (charIndex < currentString.length) {
+                    currentText += currentString.charAt(charIndex);
+                    container.innerHTML = currentText;
+                    charIndex++;
+                    setTimeout(typeWriter, 200); // Typing speed
+                } else {
+                    setTimeout(() => {
+                        charIndex = 0;
+                        currentText = '';
+                        textIndex = (textIndex + 1) % texts.length;
+                        typeWriter();
+                    }, 2000); // Pause before typing next text
+                }
+            }
+
+            typeWriter();
+        });
+    </script>
+</body>
+</html>
